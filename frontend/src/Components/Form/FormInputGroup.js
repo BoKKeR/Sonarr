@@ -5,6 +5,7 @@ import Link from 'Components/Link/Link';
 import CaptchaInputConnector from './CaptchaInputConnector';
 import CheckInput from './CheckInput';
 import DeviceInputConnector from './DeviceInputConnector';
+import KeyValueListInput from './KeyValueListInput';
 import MonitorEpisodesSelectInput from './MonitorEpisodesSelectInput';
 import NumberInput from './NumberInput';
 import OAuthInputConnector from './OAuthInputConnector';
@@ -31,6 +32,9 @@ function getComponent(type) {
 
     case inputTypes.DEVICE:
       return DeviceInputConnector;
+
+    case inputTypes.KEY_VALUE_LIST:
+      return KeyValueListInput;
 
     case inputTypes.MONITOR_EPISODES_SELECT:
       return MonitorEpisodesSelectInput;
