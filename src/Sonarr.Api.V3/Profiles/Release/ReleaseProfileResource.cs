@@ -1,18 +1,18 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
-using NzbDrone.Core.Restrictions;
+using NzbDrone.Core.Profiles.Releases;
 using Sonarr.Http.REST;
 
-namespace Sonarr.Api.V3.Restrictions
+namespace Sonarr.Api.V3.Profiles.Release
 {
-    public class RestrictionResource : RestResource
+    public class ReleaseProfileResource : RestResource
     {
         public string Required { get; set; }
-        public string Preferred { get; set; }
+        public List<KeyValuePair<string, int>> Preferred { get; set; }
         public string Ignored { get; set; }
         public HashSet<int> Tags { get; set; }
 
-        public RestrictionResource()
+        public ReleaseProfileResource()
         {
             Tags = new HashSet<int>();
         }
@@ -20,11 +20,11 @@ namespace Sonarr.Api.V3.Restrictions
 
     public static class RestrictionResourceMapper
     {
-        public static RestrictionResource ToResource(this Restriction model)
+        public static ReleaseProfileResource ToResource(this ReleaseProfile model)
         {
             if (model == null) return null;
 
-            return new RestrictionResource
+            return new ReleaseProfileResource
             {
                 Id = model.Id,
 
@@ -35,11 +35,11 @@ namespace Sonarr.Api.V3.Restrictions
             };
         }
 
-        public static Restriction ToModel(this RestrictionResource resource)
+        public static ReleaseProfile ToModel(this ReleaseProfileResource resource)
         {
             if (resource == null) return null;
 
-            return new Restriction
+            return new ReleaseProfile
             {
                 Id = resource.Id,
 
@@ -50,7 +50,7 @@ namespace Sonarr.Api.V3.Restrictions
             };
         }
 
-        public static List<RestrictionResource> ToResource(this IEnumerable<Restriction> models)
+        public static List<ReleaseProfileResource> ToResource(this IEnumerable<ReleaseProfile> models)
         {
             return models.Select(ToResource).ToList();
         }

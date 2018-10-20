@@ -1,16 +1,16 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using NzbDrone.Core.Datastore;
 
-namespace NzbDrone.Core.Restrictions
+namespace NzbDrone.Core.Profiles.Releases
 {
-    public class Restriction : ModelBase
+    public class ReleaseProfile : ModelBase
     {
         public string Required { get; set; }
-        public string Preferred { get; set; }
+        public List<KeyValuePair<string, int>> Preferred { get; set; }
         public string Ignored { get; set; }
         public HashSet<int> Tags { get; set; }
 
-        public Restriction()
+        public ReleaseProfile()
         {
             Tags = new HashSet<int>();
         }
